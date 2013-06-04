@@ -1,5 +1,5 @@
 <?php
-
+include_once(dirname(dirname(dirname(__FILE))) . '/boot.php');
 $title = 'DuelSystemGO! by GamingSamurai';
 $heading = 'DuelSystemGO! by GamingSamurai';
 

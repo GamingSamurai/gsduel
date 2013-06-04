@@ -4,7 +4,7 @@
  function start_page() {
      echo '<html><head>';
 	echo '<meta http-equiv="content-type" content="text/html; charset=utf-8">';
-     echo '<title>.'$title.'</title>';
+     echo '<title>'.$title.'</title>';
 	echo '<link rel="stylesheet" type="text/css" href="css/styles.css">';
      echo '</head>';
      echo '<body>';
