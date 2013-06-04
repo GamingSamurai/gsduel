@@ -4,7 +4,7 @@
 // Sample file can be found and edited.
 // Create a .gitignore file in your repo root (if not already present)
 // and add this file name.
-require_once(dirname(__FILE__) . '/cfg.nfo.php');
+require_once(dirname(__FILE__) . '/nfo.php');
 
 /* modified from original db connection script at http://www.php.net/manual/en/pdo.connections.php /zeus */
 
