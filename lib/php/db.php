@@ -20,7 +20,7 @@ function get_connection($prepd_sql) {
 
     try {
 
-        $dbh = new PDO('mysql:host=;dbname=', $dbu, $dbp);
+        $dbh = new PDO('mysql:host='.$host.';dbname='.$db, $dbu, $dbp);
         $sth = $dbh->prepare($prepd_sql);
         $sth->execute();
         $qres = $sth->fetchAll(PDO::FETCH_ASSOC);
