@@ -3,9 +3,6 @@ include_once(dirname(dirname(dirname(__FILE))) . '/boot.php');
 $title = 'DuelSystemGO! by GamingSamurai';
 $heading = 'DuelSystemGO! by GamingSamurai';
 
-if(isset($_POST)) {
-    
-} else {
 
 start_page($title, $heading);
 ?>
@@ -16,6 +13,5 @@ start_page($title, $heading);
     <label>Password</label><input type="text" id="pword" name="pass">
 </form>
 <?
-}
 
 end_page();

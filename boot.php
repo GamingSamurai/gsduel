@@ -1,6 +1,11 @@
 <?php
- require_once(dirname(__FILE__) . '/lib/php/functions.php');
- session_start();
+require_once(dirname(__FILE__) . '/lib/php/functions.php');
+session_save_path($_SERVER['DOCUMENT_ROOT'] . '/gsduel/s/d');
+print_r($_SESSION);
+if (!(isset($_SESSION))) {
+        session_start();
+}
+
  function start_page() {
      echo '<html><head>';
 	echo '<meta http-equiv="content-type" content="text/html; charset=utf-8">';
