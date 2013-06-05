@@ -10,7 +10,7 @@ if (!(isset($_SESSION))) {
      echo '<html><head>';
 	echo '<meta http-equiv="content-type" content="text/html; charset=utf-8">';
      echo '<title>'.$title.'</title>';
-	echo '<link rel="stylesheet" type="text/css" href="css/style.css">';
+	echo '<link rel="stylesheet" type="text/css" href="includes/css/style.css">';
      echo '</head>';
      echo '<body>';
 	echo '<h1>'.$heading.'</h1>';
