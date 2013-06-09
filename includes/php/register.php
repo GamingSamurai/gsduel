@@ -1,9 +1,14 @@
 <?php
-$title = 'DuelSystemGO! by GamingSamurai';
-$heading = 'DuelSystemGO! by GamingSamurai';
-start_page($title, $heading);
-?>
-<h2>Welcome to the Gaming Samurai DuelSystemGo!</h2>
-<h3>Sorry but we are nto accepting new registrations at this time.</h3>
-<?
-end_page();
+
+include_once(dirname(dirname(dirname(__FILE__))) . '/lib/php/functions.php');
+$u = $_POST['ruser'];
+$p1 = $_POST['rpass'];
+$p2 = $_POST['rpass2'];
+$e = $_POST['remail'];
+
+$successres = register($u, $p1, $p2, $e);
+if($successres['success'] === true;) {
+	$_SESSION['username'] = $u;
+}
+send_user_to('/',$successres,true);
+
