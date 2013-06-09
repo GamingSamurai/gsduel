@@ -8,7 +8,7 @@ start_page($title, $heading);
 ?>
 <h2>Welcome to the Gaming Samurai DuelSystemGo!</h2>
 <?php
-if((!isset($_SESSION['register'])) || (isset($_SESSION['register']) == false)) {
+if((!isset($_SESSION['register'])) || (isset($_SESSION['register']) === false)) {
 ?>
 <h3>Please Login or <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"><input type=hidden name="register" value="true"><input type="submit" value="Register"> </form> to continue:</h3>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
