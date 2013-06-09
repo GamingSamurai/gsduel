@@ -19,5 +19,5 @@ Duel System Go to soon be added to the forums.
  + Samurai of mySql, PHP Playa & General Moral Support
 * A.Kempf aka aamfk aka dbahooker
  + MySQL Master and PHP pimp
-*D.Busby aka edoceo
+* D.Busby aka edoceo
  + Guru of all things Great and Small, Gentoo God and sometimes ... 'That Guy'
