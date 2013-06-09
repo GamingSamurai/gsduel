@@ -20,4 +20,4 @@ Duel System Go to soon be added to the forums.
 * A.Kempf aka aamfk aka dbahooker
  + MySQL Master and PHP pimp
 * D.Busby aka edoceo
- + Guru of all things Great and Small, Gentoo God and sometimes ... 'That Guy'
+ + code Wizard, Gentoo Zealot and sometimes ... 'That Guy'
