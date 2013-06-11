@@ -19,6 +19,31 @@ function send_user_to($relpath, $url_args, $has_session) {
 	//http_redirect($relpath, $url_args, $has_session, 302);
 }
 
+function login($u, $p) {
+    $ret = array();
+	// $ulogin_sql = 'select id from user where name = "'.$u.'"';
+	/*$ulogin_sql = 'SELECT * FROM user '.
+	                'LEFT JOIN upjoin ON user.id=upjoin.uid '.
+	                'LEFT JOIN password ON upjoin.pid=password.id';*/
+	$ulogin_sql = 'SELECT u.name "user", p.pass "password" '.
+	                'from user u, up_join j, password p '.
+	                'where u.name = "'.$u.'" '.
+	                'and u.id = j.uid '.
+	                'and p.id = j.pid';
+    echo '<br>Logging in... <br>sql: '.$ulogin_sql,'<br>';
+	$ret = db_conn($ulogin_sql);
+	echo '<br>ret-a: '.print_r($ret).'<br>';
+	if($ret[0]['password'] == $p) {
+	    $ret['loggedin'] = true;
+	} else {
+	    $ret['loggedin'] = false;
+	}
+	echo '<br>ret-b: '.print_r($ret).'<br>';
+	
+	return $ret;
+    
+}
+
 function register($u, $p1, $p2, $e) {
 	$ret = array();
 	$ret['error'] = '';
