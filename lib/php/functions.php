@@ -20,8 +20,6 @@ function send_user_to($relpath, $url_args, $has_session) {
 }
 
 function register($u, $p1, $p2, $e) {
-	$p1 = hash('sha256', $p1);
-	$p2 = hash('sha256', $p2);
 	$ret = array();
 	$ret['error'] = '';
 	if(IsNullOrEmptyString($u)) {
@@ -29,9 +27,13 @@ function register($u, $p1, $p2, $e) {
 	}
 	if(IsNullOrEmptyString($p1)) {
 		$ret['error'] = $ret['error'].'<li>Password cannot be empty.<br>';
+	} else {
+	    $p1 = hash('sha256', $p1);
 	}
 	if(IsNullOrEmptyString($p2)) {
 		$ret['error'] = $ret['error'].'<li>Password confirmation cannot be empty.<br>';
+	} else {
+	    $p2 = hash('sha256', $p2);
 	}
 	if(IsNullOrEmptyString($e)) {
 		$ret['error'] = $ret['error'].'<li>Email cannot be empty.<br>';
