@@ -14,18 +14,29 @@ function get_connection($prepd_sql) {
     $dbhostaddress = $db_stuff['host']; 
     $db = $db_stuff['db'];
     $dbu = $db_stuff['u'];
-    $dbP = $db_stuff['p'];
+    $dbp = $db_stuff['p'];
 
     $qres = array();
 
     try {
 
-        $dbh = new PDO('mysql:host='.$host.';dbname='.$db, $dbu, $dbp);
+// mysql_connect($dbhostaddress, $dbu, $dbp) OR DIE ("Unable to connect to database! Please try again later.");
+            //mysql_select_db('gsduel');
+
+            //Fetching from your database table.
+            //$query = "SELECT * FROM $usertable";
+            //echo 'sql: '.$prepd_sql.'<br>';
+            //$qres = mysql_query($prepd_sql);
+            
+        
+        $dbh = new PDO('mysql:host='.$dbhostaddress.';dbname='.$db, $dbu, $dbp);
         $sth = $dbh->prepare($prepd_sql);
+        //$sth->bindParam(':val', $val, PDO::PARAM_INT);
         $sth->execute();
         $qres = $sth->fetchAll(PDO::FETCH_ASSOC);
-        //print_r($qres);
         $dbh = null;
+        //$qres['lastid'] = $dbh->lastInsertId();
+        echo '<br>sql : '.$prepd_sql.' : '.print_r($qres).'<br>';
 
     } catch (PDOException $e) {
 

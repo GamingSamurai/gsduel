@@ -5,30 +5,27 @@ $heading = 'DuelSystemGO! by GamingSamurai';
 
 
 start_page($title, $heading);
-?>
-<h2>Welcome to the Gaming Samurai DuelSystemGo!</h2>
-<?php
-if((!isset($_SESSION['register'])) || (isset($_SESSION['register']) === false)) {
-?>
-<h3>Please Login or <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"><input type=hidden name="register" value="true"><input type="submit" value="Register"> </form> to continue:</h3>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-    <input type="hidden" name="register" value="false">
-    <label>Username: </label><input type="text" id="uname" name="user">
-    <label>Password: </label><input type="text" id="pword" name="pass">
-    <input type="submit">
-</form>
-<?php
+echo '<h2>Welcome to the Gaming Samurai DuelSystemGo!</h2>';
+if(($_POST['login'] === true) && ($_POST['success'] === true)) {
+    ?>
+    <a href="">Continue</a>
+    <?php
 } else {
+    if($_POST['success'] === false) {
+        echo '<ul>The following errors occured during your attempt to login:';
+        foreach($_POST['error'] as $k => $v) {
+            echo '<li>'.$v.'</li>';
+        }
+        echo '</ul>';
+    }
 ?>
-<h3>Thank you for deciding to Register:</h3>
-<form action="register.php" method="POST">
-    <label>Username: </label><input type="text" id="uname" name="ruser">
-    <label>Password: </label><input type="text" id="pword" name="rpass">
-    <label>Confirm Password: </label><input type="text" id="pword2" name="rpass2">
-    <label>Email: </label><input type="text" id="email" name="remail">
-    <input type="submit">
-</form>
+    <h3>Please login or <form action="http://gsduel.gamingsamurai.com/" method="POST"><input type="hidden" name="register" value="true"><input type="submit" value="Register"></form>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <input type="hidden" name="login" value="true">
+        <label>Username: </label><input type="text" id="uname" name="user">
+        <label>Password: </label><input type="text" id="pword" name="pass">
+        <input type="submit">
+    </form>
 <?php
 }
-
 end_page();

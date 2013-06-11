@@ -6,6 +6,8 @@ if(isset($_SESSION['username'])) {
 } else {
     if(isset($_POST['register'])) {
     	$_SESSION['register'] = $_POST['register']; //echo 'REG: '.$_POST['register'];
+    	include_once(dirname(__FILE__) . '/includes/php/register.php');
+    } else {
+        include_once(dirname(__FILE__) . '/includes/php/login.php');
     }
-    include_once(dirname(__FILE__) . '/includes/php/login.php');
 }
