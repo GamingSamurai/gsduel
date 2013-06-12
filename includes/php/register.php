@@ -45,8 +45,8 @@ if(isset($_POST['user_submitted'])) {
         <h3>Thank you for deciding to Register:</h3>
         <form method="POST">
             <label>Username: </label><input type="text" id="uname" name="ruser">
-            <label>Password: </label><input type="text" id="pword" name="rpass">
-            <label>Confirm Password: </label><input type="text" id="pword2" name="rpass2">
+            <label>Password: </label><input type="password" id="pword" name="rpass">
+            <label>Confirm Password: </label><input type="password" id="pword2" name="rpass2">
             <label>Email: </label><input type="text" id="email" name="remail">
             <input type="hidden" name="user_submitted" value="true">
             <input type="hidden" name="register" value="true">
