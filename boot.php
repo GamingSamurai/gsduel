@@ -13,11 +13,12 @@ if (!isset($_SESSION)) {
 	echo '<link rel="stylesheet" type="text/css" href="includes/css/style.css">';
      echo '</head>';
      echo '<body>';
+     echo '<div id="content">';
 	echo '<h1>'.$heading.'</h1>';
  }
  
  function end_page() {
-     echo '</body></html>';
+     echo '</div></body></html>';
  }
  
  function get_data($ps) {

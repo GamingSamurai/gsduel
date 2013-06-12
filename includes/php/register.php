@@ -17,14 +17,12 @@ if(isset($_POST['user_submitted'])) {
     $e = $_POST['remail'];
     
     $successres = register($u, $p1, $p2, $e);
-    //print_r($successres);
     if($successres['success'] === true) {
-        $_SESSION['username'] = $u;  //echo 'u: '.$u;
+        $_SESSION['username'] = $u;
         echo '<h3>Thanks for registering,</h3> please <a href="">continue</a>.';
     } else {
-        echo'<ul>';
+        echo'<ul class="error">';
         echo 'There were errors with your registration:';
-        //echo '<li>'.print_r($successres).'<li>';
         foreach($successres as $k => $v) {
             if($k == 'error') { echo $v; }
         }
@@ -32,8 +30,8 @@ if(isset($_POST['user_submitted'])) {
         ?>
         <form method="POST">
             <label>Username: </label><input type="text" id="uname" name="ruser">
-            <label>Password: </label><input type="text" id="pword" name="rpass">
-            <label>Confirm Password: </label><input type="text" id="pword2" name="rpass2">
+            <label>Password: </label><input type="password" id="pword" name="rpass">
+            <label>Confirm Password: </label><input type="password" id="pword2" name="rpass2">
             <label>Email: </label><input type="text" id="email" name="remail">
             <input type="hidden" name="user_submitted" value="true">
             <input type="hidden" name="register" value="true">

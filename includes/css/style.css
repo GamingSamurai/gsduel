@@ -1,3 +1,22 @@
 body {
 background:url('http://gsduel.gamingsamurai.com/img/bg.png') no-repeat fixed bottom;
 }
+
+#content {
+    padding: 20px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+/*    background-color: #CC9900; */
+    background: rgba(0, 0, 0, .3);
+}
+
+.error {
+    color: #AAAA00;
+    padding: 10px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    border: 2px solid #FFFFFF;
+/*    background-color: #CC9900; */
+    background: rgba(99, 0, 0, .3);
+  
+}
