@@ -1,5 +1,9 @@
 <?php
 
+//DONE!!: Convert to class - see core.php /zeus
+//This file to soon be deprecated!
+
+
 // The following include is a file that should NEVER be in your repo
 // Sample file can be found and edited.
 // Create a .gitignore file in your repo root (if not already present)

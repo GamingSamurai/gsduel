@@ -1,6 +1,8 @@
 <?php
 
-require_once(dirname(__FILE__) . '/db.php');
+//require_once(dirname(__FILE__) . '/db.php');
+include 'core.php';
+
 
 // Function for basic field validation (present and neither empty nor only white space)
 function IsNullOrEmptyString($v){
@@ -8,7 +10,8 @@ function IsNullOrEmptyString($v){
 }
 
 function db_conn($prepd_sql) {
-    return get_connection($prepd_sql);
+    $dbx = core::getInstance();
+    return $dbx->getRes($prepd_sql);
 }
 
 
@@ -35,7 +38,6 @@ function login($u, $p) {
                         'and p.id = j.pid';
         $ret['try'] = db_conn($ulogin_sql);
         if($ret['try'][0]['password'] == $pup) {
-            //$_SESSION['username'] = $u;
             $ret['loggedin'] = true;
         } else {
             $ret['loggedin'] = false;
@@ -91,8 +93,6 @@ function register($u, $p1, $p2, $e) {
 			//join those shizzles
 			$insert_sql = 'insert into up_join(uid, pid) values("'.$uid[0]['id'].'", "'.$pid[0]['id'].'")';
 			$reg_j_ret = db_conn($insert_sql);
-			
-			
 			
 			$ret['ures'] = $reg_u_ret;
 			$ret['pres'] = $reg_p_ret;
