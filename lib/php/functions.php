@@ -16,7 +16,8 @@ function db_conn($prepd_sql) {
 }
 
 
-function login($u, $p) {
+function login($u, $p)
+{
     $ret = array();
     $ret['error'] = '';
 	if(IsNullOrEmptyString($u)) {
@@ -31,19 +32,19 @@ function login($u, $p) {
 	$ret_vu = db_conn($vu_sql);
 	if(!isset($ret_vu[0]['id'])) { $ret['error'] = $ret['error'].'<li>Username does not exist</li>'; }
 	if(IsNullOrEmptyString($ret['error'])) {
-        $pup = hash('sha256',$p);
-        $ulogin_sql = 'SELECT u.name "user", p.pass "password" '.
-                        'from user u, up_join j, password p '.
-                        'where u.name = "'.$u.'" '.
-                        'and u.id = j.uid '.
-                        'and p.id = j.pid';
-        $ret['try'] = db_conn($ulogin_sql);
-        if($ret['try'][0]['password'] == $pup) {
-            $ret['loggedin'] = true;
-        } else {
-            $ret['loggedin'] = false;
-            $ret['error'] = $ret['error'].'<li>Password incorrect. <span style="font-size:6px;">SUCKAH!</span></li>';
-        }
+	    $pup = hash('sha256',$p);
+	    $ulogin_sql = 'SELECT u.name "user", p.pass "password" '.
+	                    'from user u, up_join j, password p '.
+	                    'where u.name = "'.$u.'" '.
+	                    'and u.id = j.uid '.
+	                    'and p.id = j.pid';
+	    $ret['try'] = db_conn($ulogin_sql);
+	    if($ret['try'][0]['password'] == $pup) {
+	        $ret['loggedin'] = true;
+	    } else {
+	        $ret['loggedin'] = false;
+	        $ret['error'] = $ret['error'].'<li>Password incorrect. <span style="font-size:6px;">SUCKAH!</span></li>';
+	    }
 	}
 	
 	return $ret;
