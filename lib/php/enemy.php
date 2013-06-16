@@ -1,10 +1,10 @@
 <?php
 
-class weapon {
+class enemy {
 
     private static $instance;
 
-    require_once(dirname(__FILE__) . '/qbuilder.php');
+require_once(dirname(__FILE__) . '/qbuilder.php');
 
 /*
     private function __construct()
@@ -24,22 +24,14 @@ class weapon {
         return self::$instance;
     }
 
-    public static function getId()
-    {
-        return $this->id;
-    }
-    public static function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function getWeapon($name)
+    public function getEnemy($name)
     {
         $args = array();
         $args['name'] = $name;
-        $s = get_select_stm('*', 'weapons', $args);
+        $s = get_select_stm('*', 'enemy', $args);
         $c = core::getInstance();
         $res = $c->getRes($s);
+        
         return $res;
     }
 

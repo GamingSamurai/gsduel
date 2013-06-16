@@ -1,10 +1,16 @@
 <?php
+include_once(dirname(dirname(dirname(__FILE))) . '/boot.php');
 require_once(dirname(dirname(dirname(__FILE__))) . '/lib/php/qbuilder.php');
+
 $title = 'DuelSystemGO! by GamingSamurai';
 
 $heading = 'Choose your Duel!';
 start_page($title, $heading);
 
+
+$wsql = get_select_stm('*','weapons',NULL);
+$weapons = get_db_results($wsql);
+//echo '<br>weaps: '.print_r($weapons).'<br>';
 /*
 $wsql = 'SELECT type FROM weapons';
 $weapons = get_stuff_from_db($wsql);
@@ -29,12 +35,15 @@ $armors = get_db_results($asql);
         <label>Weapon: </label>
         <select name="playerweapon" id="weaponChoice">
         <?php
-/*        foreach($weapons as $warray => $weapon) {
-            foreach($weapon as $name => $val) {
-                echo '<option value="'.$val.'">'.$val.'</option>';
+        foreach($weapons as $warray => $weapon) {
+            //echo '<option value="'.$val.'">'.$val.'</option>';
+            //echo '<br>'.$weapon.'<br>';
+            foreach($weapon as $kn => $val) {
+                //echo $name.' / '.$val;
+                if($kn == 'type') { echo '<option value="'.$val.'">'.$val.'</option>'; }
             }
         }
-*/        ?>
+        ?>
         </select>
         <label>Armor: </label>
         <select name="playerarmor" id="armorChoice">

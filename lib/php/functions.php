@@ -12,7 +12,8 @@ function IsNullOrEmptyString($v){
 
 function db_conn($prepd_sql) {
     $dbx = core::getInstance();
-    return $dbx->getRes($prepd_sql);
+    $gimme = $dbx->getRes($prepd_sql);
+    return  $gimme;
 }
 
 
