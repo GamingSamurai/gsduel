@@ -8,7 +8,7 @@ function get_select_stm($c, $t, $args) {
         $i = 1;
         $xres = $xres.' WHERE';
         foreach($args as $k => $v) {
-            $xres = $xres.' '.$k' = '.$v;
+            $xres = $xres.' '.$k.' = '.$v;
             $i++;
             if(!($i > $c)) { $xres = $xres.' AND'; }
         }
@@ -24,8 +24,8 @@ function get_insert_stm($t, $cols, $vals) {
     $ires = 'INSERT INTO '.$t.' (';
     
     foreach($cols as $k => $v) { $temp_string = $temp_string.', '.$split_args['val']; }
-    $temp_string = substr($temp_string 0, -1);
-    $ires = $ires.$temp_string.') VALUES '.;
+    $temp_string = substr($temp_string, 0, -1);
+    $ires = $ires.$temp_string.') VALUES ';
 
     $temp_string = '';
 
@@ -36,15 +36,12 @@ function get_insert_stm($t, $cols, $vals) {
             $temp_string = $temp_string.', '.$split_args['val'];
         }
 
-        $temp_string = substr($temp_string 0, -1);
+        $temp_string = substr($temp_string, 0, -1);
         $temp_string = $temp_string.'),';
     }
     
-    $temp_string = substr($temp_string 0, -1);
-    $ires = $ires.$temp_string
-
-    }
-    
+    $temp_string = substr($temp_string, 0, -1);
+    $ires = $ires.$temp_string;
 
     return $ires;
 }
