@@ -18,12 +18,24 @@
 //  in other words, change the values, not the keys, please
 
 // zeus
+class Config
+{
+    static $confArray;
 
-function get_db_creds() {
-    $creds = array();
-    $creds['host'] = 'database_hostname';
-    $creds['db'] = 'database_name';
-    $creds['u'] = 'user_name';
-    $creds['p'] = 'pass_word';
-    return $creds; 
+    public static function read($name)
+    {
+        return self::$confArray[$name];
+    }
+
+    public static function write($name, $value)
+    {
+        self::$confArray[$name] = $value;
+    }
+
 }
+
+// db
+Config::write('db.host', 'database_hostname');
+Config::write('db.basename', 'database_name');
+Config::write('db.user', 'user_name');
+Config::write('db.password', 'pass_word!');
