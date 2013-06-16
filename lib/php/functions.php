@@ -1,7 +1,8 @@
 <?php
 
 //require_once(dirname(__FILE__) . '/db.php');
-include 'core.php';
+require_once(dirname(__FILE__) . '/core.php');
+require_once(dirname(__FILE__) . '/qbuilder.php');
 
 
 // Function for basic field validation (present and neither empty nor only white space)
