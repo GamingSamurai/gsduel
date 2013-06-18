@@ -31,16 +31,38 @@ class core {
     }
 
     // other, global functions
-    
+
+    //standard result query
     public function getRes($prepd_sql) {
             $qres = array();
         
             try {
                 $dcore = core::getInstance();
                 $sth = $dcore->dbh->prepare($prepd_sql);
-                $sth->bindParam(':id', $this->id, PDO::PARAM_INT);
+                //$sth->bindParam(':id', $this->id, PDO::PARAM_INT);
                 $sth->execute();
                 $qres = $sth->fetchAll(PDO::FETCH_ASSOC);
+                $dbh = null;
+        
+            } catch (PDOException $e) {
+                print "Error!: " . $e->getMessage() . "<br/>";
+                die();
+            }
+        
+            return $qres;
+    }
+
+    //for getting ckass results
+    public function getCRes($prepd_sql, $caller) {
+            $qres = array();
+        
+            try {
+                $dcore = core::getInstance();
+                $sth = $dcore->dbh->prepare($prepd_sql);
+                //$sth->bindParam(':id', $this->id, PDO::PARAM_INT);
+                $sth->execute();
+                $sth->setFetchMode(PDO::FETCH_CLASS, $caller);
+                $qres = $sth->fetch();
                 $dbh = null;
         
             } catch (PDOException $e) {

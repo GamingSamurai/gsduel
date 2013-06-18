@@ -1,6 +1,10 @@
 <?php
 require_once(dirname(__FILE__) . '/lib/php/functions.php');
 session_save_path($_SERVER['DOCUMENT_ROOT'] . '/gsduel/s/d');
+
+require_once(dirname(__FILE__) . '/lib/php/core.php');
+require_once(dirname(__FILE__) . '/lib/php/weapon.php');
+
 //print_r($_SESSION);
 if (!isset($_SESSION)) {
         session_start();

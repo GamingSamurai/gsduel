@@ -3,6 +3,7 @@
 // Where c is the column header and t is the table
 function get_select_stm($c, $t, $args) {
     $xres = 'SELECT '.$c.' FROM '.$t;
+    //TODO: make args string, not array.
     if((!($args == NULL)) && (!empty($args))) {
         $c = count($args);
         $i = 1;
