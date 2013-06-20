@@ -126,7 +126,7 @@ class enemy_weapon extends weapon {
     public $turn_variance;
     public $die_multiplier;
 
-        function getEnemyWeapon($name)
+    function getEnemyWeapon($name)
     {
         include_once(dirname(__FILE__) . '/core.php');
         include_once(dirname(__FILE__) . '/qbuilder.php');
