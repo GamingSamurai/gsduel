@@ -26,7 +26,7 @@ Duel System Go to soon be added to the forums.
 * D.Busby aka edoceo
  + code Wizard
  + Gentoo Zealot and sometimes ... 'That Guy'
-*djeneraat aka d
+* djeneraat aka d
  + status, origins and whereabouts unknown
 
 ### Project Updates ###
