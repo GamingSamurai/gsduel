@@ -26,7 +26,9 @@ Duel System Go to soon be added to the forums.
 * D.Busby aka edoceo
  + code Wizard
  + Gentoo Zealot and sometimes ... 'That Guy'
- 
+*djeneraat aka d
+ + status, origins and whereabouts unknown
+
 ### Project Updates ###
 
 * 6/18/2013 - Much work has been done as I expand my knowledge of PHP and apply what I have learned about classes from JAVA /zeus
