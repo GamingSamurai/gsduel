@@ -5,7 +5,8 @@ require_once(dirname(__FILE__) . '/core.php');
 require_once(dirname(__FILE__) . '/qbuilder.php');
 
 
-// Function for basic field validation (present and neither empty nor only white space)
+// Function for basic field validation
+// (var is set and not empty or only white space)
 function IsNullOrEmptyString($v){
     return (!isset($v) || trim($v)==='');
 }
@@ -22,16 +23,16 @@ function login($u, $p)
     $ret = array();
     $ret['error'] = '';
 	if(IsNullOrEmptyString($u)) {
-		$ret['error'] = $ret['error'].'<li>Username cannot be empty.</li>';
+		$ret['error'] .= '<li>Username cannot be empty.</li>';
 	}
 	if(IsNullOrEmptyString($p)) {
-		$ret['error'] = $ret['error'].'<li>Password cannot be empty.</li>';
+		$ret['error'] .= '<li>Password cannot be empty.</li>';
 	}
 	//does this username exist?
 	//verify user
 	$vu_sql = 'SELECT id FROM user WHERE name = "'.$u.'"';
 	$ret_vu = db_conn($vu_sql);
-	if(!isset($ret_vu[0]['id'])) { $ret['error'] = $ret['error'].'<li>Username does not exist</li>'; }
+	if(!isset($ret_vu[0]['id'])) { $ret['error'] .= '<li>Username does not exist</li>'; }
 	if(IsNullOrEmptyString($ret['error'])) {
 	    $pup = hash('sha256',$p);
 	    $ulogin_sql = 'SELECT u.name "user", p.pass "password" '.
@@ -44,7 +45,7 @@ function login($u, $p)
 	        $ret['loggedin'] = true;
 	    } else {
 	        $ret['loggedin'] = false;
-	        $ret['error'] = $ret['error'].'<li>Password incorrect. <span style="font-size:6px;">SUCKAH!</span></li>';
+	        $ret['error'] .= '<li>Password incorrect. <span style="font-size:6px;">SUCKAH!</span></li>';
 	    }
 	}
 	
@@ -56,23 +57,23 @@ function register($u, $p1, $p2, $e) {
 	$ret = array();
 	$ret['error'] = '';
 	if(IsNullOrEmptyString($u)) {
-		$ret['error'] = $ret['error'].'<li>Username cannot be empty.</li>';
+		$ret['error'] .= '<li>Username cannot be empty.</li>';
 	}
 	if(IsNullOrEmptyString($p1)) {
-		$ret['error'] = $ret['error'].'<li>Password cannot be empty.</li>';
+		$ret['error'] .= '<li>Password cannot be empty.</li>';
 	} else {
 	    $p1 = hash('sha256', $p1);
 	}
 	if(IsNullOrEmptyString($p2)) {
-		$ret['error'] = $ret['error'].'<li>Password confirmation cannot be empty.</li>';
+		$ret['error'] .= '<li>Password confirmation cannot be empty.</li>';
 	} else {
 	    $p2 = hash('sha256', $p2);
 	}
 	if(IsNullOrEmptyString($e)) {
-		$ret['error'] = $ret['error'].'<li>Email cannot be empty.</li>';
+		$ret['error'] .= '<li>Email cannot be empty.</li>';
 	}
 	if(!($p1 == $p2)) {
-		$ret['error'] = $ret['error'].'<li>Your passwords do not match.</li>';
+		$ret['error'] .= '<li>Your passwords do not match.</li>';
 	}
 	
 	if(!($ret['error'] === '')) {
