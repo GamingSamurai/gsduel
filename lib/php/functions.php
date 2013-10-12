@@ -62,7 +62,7 @@ function register($u, $p1, $p2, $e) {
 	$formvars['email'] = $e;
 	$ret['error'] = '';
 
-	for ($formvars as $k => $v) {
+	foreach ($formvars as $k => $v) {
 	    if (IsNullOrEmptyString($v)) {
 	        $ret['error'] .= '<li>'.$k.' cannot be empty';
 	    } else if ($k == 'pass' || $k == 'pass2') {
