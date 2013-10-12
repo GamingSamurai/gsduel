@@ -19,7 +19,7 @@ if(isset($_POST['user_submitted'])) {
     $successres = register($u, $p1, $p2, $e);
     if($successres['success'] === true) {
         $_SESSION['username'] = $u;
-        echo '<h3>Thanks for registering,</h3> please <a href="">continue</a>.';
+        echo '<h3>Thanks for registering,</h3> please <a href="http://gamingsamurai.com/gsduel/">continue</a>.';
     } else {
         echo'<ul class="error">';
         echo 'There were errors with your registration:';

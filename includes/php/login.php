@@ -28,7 +28,10 @@ if($_POST['login'] == true) {
     }
 } else {
 ?>
-    <h3>Please login or <form action="http://gsduel.gamingsamurai.com/" method="POST"><input type="hidden" name="register" value="true"><input type="submit" value="Register"></form>
+    <h3>Please login or <form action="http://gsduel.gamingsamurai.com/" method="POST">
+            <input type="hidden" name="register" value="true">
+            <input type="submit" value="Register">
+        </form>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <input type="hidden" name="login" value="true">
         <label>Username: </label><input type="text" id="uname" name="user">

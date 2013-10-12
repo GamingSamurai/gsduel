@@ -55,7 +55,21 @@ function login($u, $p)
 
 function register($u, $p1, $p2, $e) {
 	$ret = array();
+	$formvars = array();
+	$formvars['user'] = $u;
+	$formvars['pass'] = $p1;
+	$formvars['pass2'] = $p2;
+	$formvars['email'] = $e;
 	$ret['error'] = '';
+
+	for ($formvars as $k => $v) {
+	    if (IsNullOrEmptyString($v)) {
+	        $ret['error'] .= '<li>'.$k.' cannot be empty';
+	    } else if ($k == 'pass' || $k == 'pass2') {
+	        $formvars[$k] = hash('sha256', $v);
+	    }
+	}
+/*
 	if(IsNullOrEmptyString($u)) {
 		$ret['error'] .= '<li>Username cannot be empty.</li>';
 	}
@@ -72,7 +86,8 @@ function register($u, $p1, $p2, $e) {
 	if(IsNullOrEmptyString($e)) {
 		$ret['error'] .= '<li>Email cannot be empty.</li>';
 	}
-	if(!($p1 == $p2)) {
+*/
+    if(!($p1 == $p2)) {
 		$ret['error'] .= '<li>Your passwords do not match.</li>';
 	}
 	
@@ -91,9 +106,9 @@ function register($u, $p1, $p2, $e) {
 			$reg_u_ret = db_conn($insert_sql);
 			$uid = db_conn('select id from user where name="'.$u.'"');
 			//insert new password
-			$insert_sql = 'insert into password(pass) values("'.$p1.'")';
+			$insert_sql = 'insert into password(pass) values("'.$formvars['pass'].'")';
 			$reg_p_ret = db_conn($insert_sql);
-			$pid = db_conn('select id from password where pass = "'.$p1.'"');
+			$pid = db_conn('select id from password where pass = "'.$formvars['pass'].'"');
 			//join those shizzles
 			$insert_sql = 'insert into up_join(uid, pid) values("'.$uid[0]['id'].'", "'.$pid[0]['id'].'")';
 			$reg_j_ret = db_conn($insert_sql);
